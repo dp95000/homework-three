@@ -24,7 +24,7 @@ function passwordGenerate() {
 
     // check to see which confirmations have been selected.
 
-    // if all options are selected
+    // 1.) if all options are selected
     if (confirmUppercase && confirmLowercase && confirmNumbers && confirmSpecial) {
         function generate(length = newPasswordLength){
             var all = upperCase + lowerCase + numbers + symbols;
@@ -33,14 +33,14 @@ function passwordGenerate() {
                     var character = Math.floor(Math.random() * all.length);
                     password += all[(character, character + 1)];
                 }
-                console.log(password);
+                document.getElementById("passwordOutput").innerHTML = password;
             return password;
         }
         generate(newPasswordLength);
     }
 
 
-    // if only uppercase, lowercase, & numbers are selected
+    // 2.) if only uppercase, lowercase, & numbers are selected
     else if (confirmUppercase && confirmLowercase && confirmNumbers) {
         function generate(length = newPasswordLength){
             var all = upperCase + lowerCase + numbers;
@@ -49,14 +49,14 @@ function passwordGenerate() {
                     var character = Math.floor(Math.random() * all.length);
                     password += all[(character, character + 1)];
                 }
-                console.log(password);
+                document.getElementById("passwordOutput").innerHTML = password;
             return password;
         }
         generate(newPasswordLength);
     }
 
 
-    // if only uppercase & lowercase are selected
+    // 3.) if only uppercase & lowercase are selected
     else if (confirmUppercase && confirmLowercase) {
         function generate(length = newPasswordLength){
             var all = upperCase + lowerCase + numbers;
@@ -65,10 +65,124 @@ function passwordGenerate() {
                     var character = Math.floor(Math.random() * all.length);
                     password += all[(character, character + 1)];
                 }
-                console.log(password);
+                document.getElementById("passwordOutput").innerHTML = password;
             return password;
         }
         generate(newPasswordLength);
+    }
+
+
+    // 4.) if only uppercase is selected
+    else if (confirmUppercase) {
+        function generate(length = newPasswordLength){
+            var all = upperCase;
+            var password = '';
+                for (var index = 0; index < length; index++) {
+                    var character = Math.floor(Math.random() * all.length);
+                    password += all[(character, character + 1)];
+                }
+                document.getElementById("passwordOutput").innerHTML = password;
+            return password;
+        }
+        generate(newPasswordLength);
+    }
+
+    // 5.) if only lowercase is selected
+    if (confirmLowercase) {
+        function generate(length = newPasswordLength){
+            var all = lowerCase;
+            var password = '';
+                for (var index = 0; index < length; index++) {
+                    var character = Math.floor(Math.random() * all.length);
+                    password += all[(character, character + 1)];
+                }
+                document.getElementById("passwordOutput").innerHTML = password;
+            return password;
+        }
+        generate(newPasswordLength);
+    }
+
+
+    // 6.) if only numbers are selected
+    if (confirmNumbers) {
+        function generate(length = newPasswordLength){
+            var all = numbers;
+            var password = '';
+                for (var index = 0; index < length; index++) {
+                    var character = Math.floor(Math.random() * all.length);
+                    password += all[(character, character + 1)];
+                }
+                document.getElementById("passwordOutput").innerHTML = password;
+            return password;
+        }
+        generate(newPasswordLength);
+    }
+
+
+    // 7.) if only symbols are selected
+    if (confirmSpecial) {
+        function generate(length = newPasswordLength){
+            var all = symbols;
+            var password = '';
+                for (var index = 0; index < length; index++) {
+                    var character = Math.floor(Math.random() * all.length);
+                    password += all[(character, character + 1)];
+                }
+                document.getElementById("passwordOutput").innerHTML = password;
+            return password;
+        }
+        generate(newPasswordLength);
+    }
+
+    // 8.) if only numbers & symbols are selected
+    if (confirmNumbers && confirmSpecial) {
+        function generate(length = newPasswordLength){
+            var all = numbers + symbols;
+            var password = '';
+                for (var index = 0; index < length; index++) {
+                    var character = Math.floor(Math.random() * all.length);
+                    password += all[(character, character + 1)];
+                }
+                document.getElementById("passwordOutput").innerHTML = password;
+            return password;
+        }
+        generate(newPasswordLength);
+    }
+
+
+    // 9.) if only lowercase & numbers are selected
+    if (confirmLowercase && confirmNumbers) {
+        function generate(length = newPasswordLength){
+            var all = lowerCase + numbers;
+            var password = '';
+                for (var index = 0; index < length; index++) {
+                    var character = Math.floor(Math.random() * all.length);
+                    password += all[(character, character + 1)];
+                }
+                document.getElementById("passwordOutput").innerHTML = password;
+            return password;
+        }
+        generate(newPasswordLength);
+    }
+
+
+    // 10.) if only lowercase & numbers are selected
+    if (confirmLowercase && confirmSpecial) {
+        function generate(length = newPasswordLength){
+            var all = upperCase + lowerCase + numbers + symbols;
+            var password = '';
+                for (var index = 0; index < length; index++) {
+                    var character = Math.floor(Math.random() * all.length);
+                    password += all[(character, character + 1)];
+                }
+                document.getElementById("passwordOutput").innerHTML = password;
+            return password;
+        }
+        generate(newPasswordLength);
+    }
+
+    else {
+        alert("Please select at least one conditional choice from lower or uppercase letters, numbers, or special characters");
     }
 
 }
