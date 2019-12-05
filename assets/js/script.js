@@ -59,7 +59,7 @@ function passwordGenerate() {
     // 3.) if only uppercase & lowercase are selected
     else if (confirmUppercase && confirmLowercase) {
         function generate(length = newPasswordLength){
-            var all = upperCase + lowerCase + numbers;
+            var all = upperCase + lowerCase;
             var password = '';
                 for (var index = 0; index < length; index++) {
                     var character = Math.floor(Math.random() * all.length);
@@ -88,7 +88,7 @@ function passwordGenerate() {
     }
 
     // 5.) if only lowercase is selected
-    if (confirmLowercase) {
+    else if (confirmLowercase) {
         function generate(length = newPasswordLength){
             var all = lowerCase;
             var password = '';
@@ -104,7 +104,7 @@ function passwordGenerate() {
 
 
     // 6.) if only numbers are selected
-    if (confirmNumbers) {
+    else if (confirmNumbers) {
         function generate(length = newPasswordLength){
             var all = numbers;
             var password = '';
@@ -120,7 +120,7 @@ function passwordGenerate() {
 
 
     // 7.) if only symbols are selected
-    if (confirmSpecial) {
+    else if (confirmSpecial) {
         function generate(length = newPasswordLength){
             var all = symbols;
             var password = '';
@@ -135,7 +135,7 @@ function passwordGenerate() {
     }
 
     // 8.) if only numbers & symbols are selected
-    if (confirmNumbers && confirmSpecial) {
+    else if (confirmNumbers && confirmSpecial) {
         function generate(length = newPasswordLength){
             var all = numbers + symbols;
             var password = '';
@@ -151,7 +151,7 @@ function passwordGenerate() {
 
 
     // 9.) if only lowercase & numbers are selected
-    if (confirmLowercase && confirmNumbers) {
+    else if (confirmLowercase && confirmNumbers) {
         function generate(length = newPasswordLength){
             var all = lowerCase + numbers;
             var password = '';
@@ -167,7 +167,7 @@ function passwordGenerate() {
 
 
     // 10.) if only lowercase & numbers are selected
-    if (confirmLowercase && confirmSpecial) {
+    else if (confirmLowercase && confirmSpecial) {
         function generate(length = newPasswordLength){
             var all = upperCase + lowerCase + numbers + symbols;
             var password = '';
@@ -186,3 +186,11 @@ function passwordGenerate() {
     }
 
 }
+
+function copyClipboard() {
+    var copyText = document.getElementById("passwordOutput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    alert("Your password has been copied to clipboard.");
+  }
