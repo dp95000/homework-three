@@ -26,10 +26,10 @@ button#generate {
 }
 button#copy {
     padding: 10px;
-    border: none;
-    color: #fff;
     border-radius: 22px;
     font-weight: bold;
+    border: 1px solid;
+    margin-left: 2%;
 }
 
 @media (max-width: 482px) {

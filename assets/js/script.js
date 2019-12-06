@@ -1,20 +1,18 @@
 function passwordGenerate() {
+
     var passLength = prompt("Enter Desired Password Length. Min 8 Characters and 128 Max.");
 
-    var confirmUppercase = confirm("Have Password Contain Uppercase Letters?");
-    var confirmLowercase = confirm("Have Password Contain Lowercase Letters?");
-    var confirmNumbers = confirm("Have Password Contain Numbers?");
-    var confirmSpecial = confirm("Have Password Contain Special Characters?");
-    
     // Verify that password length meets requirements and creates an array that is the same length as the user input.
     if (passLength >= 8 && passLength <= 128) {
         var newPasswordLength = parseInt(passLength);
         //var newPasswordLength = passLength;
-        console.log(newPasswordLength);
-    }
-    else {
-        alert("Please enter a number between 8 and 128");
-    }
+    //console.log(newPasswordLength);
+    var confirmUppercase = confirm("Have Password Contain Uppercase Letters?");
+    var confirmLowercase = confirm("Have Password Contain Lowercase Letters?");
+    var confirmNumbers = confirm("Have Password Contain Numbers?");
+    var confirmSpecial = confirm("Have Password Contain Special Characters?");
+
+    var newPasswordLength;
 
     // variables for all values.
     var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -25,7 +23,7 @@ function passwordGenerate() {
     // check to see which confirmations have been selected.
 
     // 1.) if all options are selected
-    if (confirmUppercase && confirmLowercase && confirmNumbers && confirmSpecial) {
+    if (newPasswordLength >= 8 && newPasswordLength <= 128 && confirmUppercase && confirmLowercase && confirmNumbers && confirmSpecial) {
         function generate(length = newPasswordLength){
             var all = upperCase + lowerCase + numbers + symbols;
             var password = '';
@@ -41,7 +39,7 @@ function passwordGenerate() {
 
 
     // 2.) if only uppercase, lowercase, & numbers are selected
-    else if (confirmUppercase && confirmLowercase && confirmNumbers) {
+    else if (newPasswordLength >= 8 && newPasswordLength <= 128 && confirmUppercase && confirmLowercase && confirmNumbers) {
         function generate(length = newPasswordLength){
             var all = upperCase + lowerCase + numbers;
             var password = '';
@@ -57,7 +55,7 @@ function passwordGenerate() {
 
 
     // 3.) if only uppercase & lowercase are selected
-    else if (confirmUppercase && confirmLowercase) {
+    else if (newPasswordLength >= 8 && newPasswordLength <= 128 && confirmUppercase && confirmLowercase) {
         function generate(length = newPasswordLength){
             var all = upperCase + lowerCase;
             var password = '';
@@ -73,7 +71,7 @@ function passwordGenerate() {
 
 
     // 4.) if only uppercase is selected
-    else if (confirmUppercase) {
+    else if (newPasswordLength >= 8 && newPasswordLength <= 128 && confirmUppercase) {
         function generate(length = newPasswordLength){
             var all = upperCase;
             var password = '';
@@ -88,7 +86,7 @@ function passwordGenerate() {
     }
 
     // 5.) if only lowercase is selected
-    else if (confirmLowercase) {
+    else if (newPasswordLength >= 8 && newPasswordLength <= 128 && confirmLowercase) {
         function generate(length = newPasswordLength){
             var all = lowerCase;
             var password = '';
@@ -104,7 +102,7 @@ function passwordGenerate() {
 
 
     // 6.) if only numbers are selected
-    else if (confirmNumbers) {
+    else if (newPasswordLength >= 8 && newPasswordLength <= 128 && confirmNumbers) {
         function generate(length = newPasswordLength){
             var all = numbers;
             var password = '';
@@ -120,7 +118,7 @@ function passwordGenerate() {
 
 
     // 7.) if only symbols are selected
-    else if (confirmSpecial) {
+    else if (newPasswordLength >= 8 && newPasswordLength <= 128 && confirmSpecial) {
         function generate(length = newPasswordLength){
             var all = symbols;
             var password = '';
@@ -135,7 +133,7 @@ function passwordGenerate() {
     }
 
     // 8.) if only numbers & symbols are selected
-    else if (confirmNumbers && confirmSpecial) {
+    else if (newPasswordLength >= 8 && newPasswordLength <= 128 && confirmNumbers && confirmSpecial) {
         function generate(length = newPasswordLength){
             var all = numbers + symbols;
             var password = '';
@@ -151,7 +149,7 @@ function passwordGenerate() {
 
 
     // 9.) if only lowercase & numbers are selected
-    else if (confirmLowercase && confirmNumbers) {
+    else if (newPasswordLength >= 8 && newPasswordLength <= 128 && confirmLowercase && confirmNumbers) {
         function generate(length = newPasswordLength){
             var all = lowerCase + numbers;
             var password = '';
@@ -167,7 +165,7 @@ function passwordGenerate() {
 
 
     // 10.) if only lowercase & numbers are selected
-    else if (confirmLowercase && confirmSpecial) {
+    else if (newPasswordLength >= 8 && newPasswordLength <= 128 && confirmLowercase && confirmSpecial) {
         function generate(length = newPasswordLength){
             var all = upperCase + lowerCase + numbers + symbols;
             var password = '';
@@ -185,12 +183,25 @@ function passwordGenerate() {
         alert("Please select at least one conditional choice from lower or uppercase letters, numbers, or special characters");
     }
 
+    }
+    else {
+        alert("Please enter a number between 8 and 128");
+    }
+
+   
+
 }
+
+var passwordDisplayed;
+console.log(passwordDisplayed);
 
 function copyClipboard() {
     var copyText = document.getElementById("passwordOutput");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999)
-    document.execCommand("copy");
-    alert("Your password has been copied to clipboard.");
+    var text = copyText.textContent;
+    if (text.length > 0) {
+        copyText.select();
+        copyText.setSelectionRange(0, 99999)
+        document.execCommand("copy");
+        alert("Your password has been copied to clipboard.");
+    }
   }
